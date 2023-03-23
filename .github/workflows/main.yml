@@ -12,14 +12,18 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/checkout@master
+    - name: Set tag
+      run: sed 's/\//-/g'  <<< "::set-output name=TAG::${{ steps.extract_branch.outputs.branch }}"
+      id: tag
+    - name: Get tag
+      run: echo "The selected tag is ${{ steps.tag.outputs.TAG }}"
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       env:
         REPOSITORY: https://github.com/deNBI/cloud-user-docs/archive/master.tar.gz
       with:
-        name: denbicloud/mkdocswebhook
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: Dockerfile
         buildargs: REPOSITORY  
-        tags: "staging"
+        tags: quay.io/denbicloud/mkdocswebhook:${{ steps.tag.outputs.TAG }}
