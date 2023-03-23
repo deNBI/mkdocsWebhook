@@ -27,3 +27,4 @@ jobs:
         dockerfile: Dockerfile
         buildargs: REPOSITORY  
         tags: quay.io/denbicloud/mkdocswebhook:${{ steps.tag.outputs.TAG }}
+
