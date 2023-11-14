@@ -5,3 +5,4 @@ mkdocs-htmlproofer-plugin
 pygments
 pymdown-extensions
 mkdocs-git-revision-date-localized-plugin
+mkdocs-macros-plugin
