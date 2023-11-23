@@ -1,5 +1,5 @@
 mkdocs==1.5.3
-mkdocs-material==9.4.10
+mkdocs-material==9.4.11
 mkdocs-glightbox==0.3.5
 mkdocs-htmlproofer-plugin
 pygments
