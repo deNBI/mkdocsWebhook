@@ -14,7 +14,7 @@ jobs:
                 python-version: '3.8' # Version range or exact version of a Python version to use, using SemVer's version range syntax
             - uses: actions/checkout@v4.1.1
             - name: Build with retry
-              uses: Wandalen/wretry.action@v3.0.0
+              uses: Wandalen/wretry.action@v3.0.1
               with:
                 command: docker build --no-cache  . 
                 attempt_limit: 3
