@@ -1,5 +1,5 @@
 # Use a stable Python base image (Debian 12 based)
-FROM python:3.11-slim
+FROM python:3.13-slim
 
 # Set environment variables
 ENV WEBHOOK_URL_PREFIX="wiki/hooks"
