@@ -17,7 +17,7 @@ ADD requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Install webhook binary
-RUN wget -qO- https://github.com/adnanh/webhook/releases/download/2.8.1/webhook-linux-amd64.tar.gz \
+RUN wget -qO- https://github.com/adnanh/webhook/releases/download/2.8.3/webhook-linux-amd64.tar.gz \
     | tar xzv --strip 1 -C /usr/local/bin
 
 # Create required directories
