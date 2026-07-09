@@ -1,11 +1,11 @@
 # Use a stable Python base image (Debian 12 based)
-FROM python:3.14-slim
+FROM python:3.14-slim@sha256:b877e50bd90de10af8d82c57a022fc2e0dc731c5320d762a27986facfc3355c1
 
 # Set environment variables
 ENV WEBHOOK_URL_PREFIX="wiki/hooks"
 
 # Install system dependencies
-RUN apt update && apt install -y --no-install-recommends \
+RUN apt update && apt upgrade && apt install -y --no-install-recommends \
     unzip apache2 build-essential python3-dev python3-pip \
     python3-setuptools python3-wheel python3-cffi libcairo2 \
     libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf-2.0-0 \
@@ -17,7 +17,7 @@ ADD requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Install webhook binary
-RUN wget -qO- https://github.com/adnanh/webhook/releases/download/2.8.1/webhook-linux-amd64.tar.gz \
+RUN wget -qO- https://github.com/adnanh/webhook/releases/download/2.8.3/webhook-linux-amd64.tar.gz \
     | tar xzv --strip 1 -C /usr/local/bin
 
 # Create required directories
