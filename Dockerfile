@@ -1,5 +1,6 @@
 # --- Build Stage for Webhook ---
-FROM golang:1.24-bookworm AS builder
+# Use the latest Go version to fix stdlib vulnerabilities (Fixed in 1.25.10+)
+FROM golang:1.26-bookworm AS builder
 
 # Install git to fetch dependencies
 RUN apt-get update && apt-get install -y git
@@ -10,12 +11,14 @@ RUN git clone https://github.com/adnanh/webhook.git /build \
     && make build
 
 # --- Final Stage ---
-FROM python:3.12-slim-bookworm
+# Upgrade to Python 3.13 to fix binary vulnerabilities
+FROM python:3.13-slim-bookworm
 
 # Set environment variables
 ENV WEBHOOK_URL_PREFIX="wiki/hooks"
 
 # Install system dependencies and upgrade for security patches
+# Note: Some packages are marked 'won't fix' by Debian and require a base OS change (e.g. to Alpine)
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
     apache2 \
     git \
@@ -44,5 +47,6 @@ RUN chmod +x /usr/local/bin/start.sh /usr/local/bin/update.sh
 
 # Set container entrypoint
 ENTRYPOINT ["/usr/local/bin/start.sh"]
+
 
 
