@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BRANCH=${BRANCH:-master}
+BRANCH=${BRANCH:-main}
 
 (
   flock -n 9 || exit 1
