@@ -1,6 +1,6 @@
 # --- Build Stage for Webhook ---
 # Use Alpine for the builder to maintain consistency
-FROM golang:1.26-alpine AS builder
+FROM golang:1.27-alpine AS builder
 
 # Install git to fetch dependencies
 RUN apk add --no-cache git
@@ -12,7 +12,7 @@ RUN git clone https://github.com/adnanh/webhook.git /build \
     && CGO_ENABLED=0 go build -o webhook .
 
 # --- Final Stage ---
-FROM python:3.13-alpine
+FROM python:3.14-alpine
 
 # Set environment variables
 ENV WEBHOOK_URL_PREFIX="wiki/hooks"
