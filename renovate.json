@@ -54,7 +54,8 @@
       ],
       "matchUpdateTypes": [
         "pin"
-      ]
+      ],
+      "enabled": false
     },
     {
       "matchLabels": [
