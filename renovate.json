@@ -55,6 +55,12 @@
       "matchUpdateTypes": [
         "pin"
       ]
+    },
+    {
+      "matchLabels": [
+        "security"
+      ],
+      "minimumReleaseAge": null
     }
   ],
   "prHourlyLimit": 0,
@@ -66,5 +72,6 @@
     "labels": [
       "security"
     ]
-  }
+  },
+  "minimumReleaseAge": "3 days"
 }
