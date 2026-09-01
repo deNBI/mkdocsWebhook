@@ -10,7 +10,7 @@
   "commitBodyTable": true,
   "commitMessagePrefix": "feat(Dependencies):",
   "extends": [
-    "config:recommended",
+    "config:best-practices",
     "helpers:pinGitHubActionDigests"
   ],
   "ignore": [
