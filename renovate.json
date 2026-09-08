@@ -13,13 +13,6 @@
     "config:best-practices",
     "helpers:pinGitHubActionDigests"
   ],
-  "ignore": [
-    {
-      "updateTypes": [
-        "digest"
-      ]
-    }
-  ],
   "labels": [
     "dependencies"
   ],
@@ -53,15 +46,10 @@
         "pin"
       ],
       "matchUpdateTypes": [
-        "pin"
+        "pin",
+        "digest"
       ],
       "enabled": false
-    },
-    {
-      "matchLabels": [
-        "security"
-      ],
-      "minimumReleaseAge": null
     }
   ],
   "prHourlyLimit": 0,
