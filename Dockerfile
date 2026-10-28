@@ -1,6 +1,6 @@
 # --- Build Stage for Webhook ---
 # Use Alpine for the builder to maintain consistency
-FROM golang:1.27-alpine AS builder
+FROM golang:1.27.3-alpine@sha256:7eadb9cbb0aab2649418025b8472a770195e9a94921309519896514de85bba7f AS builder
 
 # Install git to fetch dependencies
 RUN apk add --no-cache git
