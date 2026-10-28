@@ -1,6 +1,6 @@
 # --- Build Stage for Webhook ---
 # Use Alpine for the builder to maintain consistency
-FROM golang:1.26-alpine AS builder
+FROM golang:1.27-alpine AS builder
 
 # Install git to fetch dependencies
 RUN apk add --no-cache git
@@ -29,6 +29,7 @@ RUN apk add --no-cache \
 # Alpine's httpd uses /var/www/localhost/htdocs by default,
 # but we'll keep your custom paths.
 RUN mkdir -p /var/webhook /srv_root/docs /var/www/html/wiki /run/httpd /var/log/httpd
+RUN git config --global --add safe.directory /srv_root/docs
 
 # Copy and install Python dependencies
 # We use --no-cache-dir to keep the image slim

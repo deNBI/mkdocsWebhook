@@ -1,47 +1,66 @@
 {
-  "extends": [
-    "config:recommended",
-    "helpers:pinGitHubActionDigests"
+  "assignees": [
+    "team:portal-dev"
   ],
- "packageRules": [
-    {
-      "matchUpdateTypes": [
-          "major"
-       ],
-      "addLabels": ["major"]
-    },
-    {
-      "matchUpdateTypes": [
-          "minor"
-       ],
-      "addLabels": ["minor"]
-    },
-     {
-      "matchUpdateTypes": [
-             "patch"
-         ],
-      "addLabels": ["patch"]
-    },
-    {
-      "matchUpdateTypes": [
-          "pin"
-       ],
-      "addLabels": ["pin"]
-    }
-   ],
-  "vulnerabilityAlerts": {
-    "labels": ["security"]
-  },
   "baseBranchPatterns": [
     "dev"
   ],
-  "reviewers": ["team:portal-dev"],
-  "labels": ["dependencies"],
-  "assignees": ["team:portal-dev"],
   "branchPrefix": "deps/",
   "bumpVersion": "minor",
-  "rebaseWhen": "behind-base-branch",
   "commitBodyTable": true,
-  "prHourlyLimit": 0, 
-  "commitMessagePrefix": "feat(Dependencies):"
+  "commitMessagePrefix": "feat(Dependencies):",
+  "extends": [
+    "config:best-practices",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "packageRules": [
+    {
+      "addLabels": [
+        "major"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ]
+    },
+    {
+      "addLabels": [
+        "minor"
+      ],
+      "matchUpdateTypes": [
+        "minor"
+      ]
+    },
+    {
+      "addLabels": [
+        "patch"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ]
+    },
+    {
+      "addLabels": [
+        "pin"
+      ],
+      "matchUpdateTypes": [
+        "pin",
+        "digest"
+      ],
+      "enabled": false
+    }
+  ],
+  "prHourlyLimit": 0,
+  "rebaseWhen": "behind-base-branch",
+  "reviewers": [
+    "team:portal-dev"
+  ],
+  "vulnerabilityAlerts": {
+    "labels": [
+      "security"
+    ]
+  },
+  "minimumReleaseAge": "3 days"
 }
