@@ -1,0 +1,21 @@
+name: pip-audit
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited, review_requested, ready_for_review]
+  workflow_dispatch:
+
+jobs:
+  pip-audit:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Run Python Audit
+        uses: denbi/portal-github-actions/python-audit@main
+        with:
+          python_version: '3.14'
+          requirements_files: 'requirements.txt'
