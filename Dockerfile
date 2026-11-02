@@ -3,7 +3,7 @@
 FROM golang:1.27.3-alpine@sha256:7eadb9cbb0aab2649418025b8472a770195e9a94921309519896514de85bba7f AS builder
 
 # Install git to fetch dependencies
-RUN apk add --no-cache git
+RUN apk update && apk upgrade --no-cache &&  apk add --no-cache git
 
 # Clone and build webhook as a static binary (CGO_ENABLED=0)
 # This ensures it runs on Alpine's musl libc
@@ -19,7 +19,7 @@ ENV WEBHOOK_URL_PREFIX="wiki/hooks"
 
 # Install system dependencies
 # apache2 = Apache, util-linux = for 'flock' in update.sh
-RUN apk add --no-cache \
+RUN apk update && apk upgrade --no-cache && apk add --no-cache \
     apache2 \
     git \
     ca-certificates \
