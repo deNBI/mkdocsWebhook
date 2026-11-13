@@ -1,4 +1,4 @@
-mkdocs-material==9.8.0
+mkdocs-material==9.8.1
 mkdocs-glightbox==0.5.3
 mkdocs==1.6.1
 mkdocs-htmlproofer-plugin==1.6.0
