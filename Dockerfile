@@ -10,7 +10,7 @@ RUN git clone https://github.com/adnanh/webhook.git /build \
 
 
 # --- Final Stage ---
-FROM python:3.14.10-alpine3.24@sha256:eb2c62658b8d51bff0acc408504b76521d02030de56a8a3c1e830083e89b89d2
+FROM python:3.15.1-alpine3.24@sha256:54448f67d7c31c39e5cdd3ea2d6382395ce142806c284425f8e897d78a0465b3
 
 ENV WEBHOOK_URL_PREFIX="wiki/hooks"
 
